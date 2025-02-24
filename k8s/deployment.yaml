@@ -1,0 +1,69 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playlists-recommender-ml
+  labels:
+    app: playlists-recommender-ml
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playlists-recommender-ml
+  template:
+    metadata:
+      labels:
+        app: playlists-recommender-ml
+    spec:
+      containers:
+      - name: ml
+        image: zakharnikolaevich/playlists-recommender-ml
+        env:
+        - name: DATASET_PATH
+          value: "/data/2023_spotify_ds1.csv"
+        - name: MODEL_PATH
+          value: "/shared/model.pkl"
+        volumeMounts:
+        - name: dataset-volume
+          mountPath: /data
+        - name: shared-volume
+          mountPath: /shared
+      volumes:
+      - name: dataset-volume
+        hostPath:
+          path: /home/datasets/spotify
+      - name: shared-volume
+        persistentVolumeClaim:
+          claimName: project2-pvc-zakhar
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playlists-recommender-frontend
+  labels:
+    app: playlists-recommender-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playlists-recommender-frontend
+  template:
+    metadata:
+      labels:
+        app: playlists-recommender-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: zakharnikolaevich/playlists-recommender-frontend
+        ports:
+        - containerPort: 52002
+        env:
+        - name: MODEL_PATH
+          value: "/shared/model.pkl"
+        volumeMounts:
+        - name: shared-volume
+          mountPath: /shared
+      volumes:
+      - name: shared-volume
+        persistentVolumeClaim:
+          claimName: project2-pvc-zakhar
