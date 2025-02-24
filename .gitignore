@@ -5,5 +5,5 @@ __pycache__/
 mongodb-deployment.yaml
 mongodb-secret.yaml
 mongo-express-deployment.yaml
--h
+-H
 -d
