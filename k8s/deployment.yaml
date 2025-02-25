@@ -1,3 +1,4 @@
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -17,7 +18,7 @@ spec:
     spec:
       containers:
       - name: ml
-        image: zakharnikolaevich/playlists-recommender-ml
+        image: zakharnikolaevich/playlists-recommender-ml:v6 
         env:
         - name: DATASET_PATH
           value: "/data/2023_spotify_ds1.csv"
@@ -35,6 +36,7 @@ spec:
       - name: shared-volume
         persistentVolumeClaim:
           claimName: project2-pvc-zakhar
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -67,3 +69,4 @@ spec:
       - name: shared-volume
         persistentVolumeClaim:
           claimName: project2-pvc-zakhar
+
