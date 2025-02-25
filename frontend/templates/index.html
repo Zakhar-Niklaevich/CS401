@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playlist Recommender</title>
-    <link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Search</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Playlist Recommendation System</h1>
-    <form id="recommendForm">
-        <label for="songs">Enter Songs (comma-separated):</label>
-        <input type="text" id="songs" name="songs" required>
-        <button type="submit">Get Recommendations</button>
+  <div class="container">
+    <header class="header">
+      <img src="{{ url_for('static', filename='spotify-logo.png') }}" alt="Spotify Logo" class="logo">
+      <h1>Track Search</h1>
+    </header>
+    <form id="recommendForm" class="search-form">
+      <input type="text" id="songs" name="songs" placeholder="Enter track name" required>
+      <button type="submit">Search</button>
     </form>
-    <h2>Recommended Songs:</h2>
-    <ul id="recommendations"></ul>
-
-    <script src="{{ url_for("static", filename="script.js") }}"></script>
+    <section class="results">
+      <h2>Recommendations:</h2>
+      <ul id="recommendations"></ul>
+    </section>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

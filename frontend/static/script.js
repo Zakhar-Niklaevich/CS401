@@ -1,11 +1,11 @@
 document.getElementById("recommendForm").addEventListener("submit", function(event) {
     event.preventDefault();
-    let inputSongs = document.getElementById("songs").value.split(",").map(s => s.trim());
+    let inputSong = document.getElementById("songs").value.trim();
     
     fetch("/api/recommend", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ "songs": inputSongs })
+        body: JSON.stringify({ "songs": [inputSong] })
     })
     .then(response => response.json())
     .then(data => {
