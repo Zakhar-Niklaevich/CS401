@@ -7,8 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ml_model.py .
 
-ENV DATASET_CSV=/data/2023_spotify_ds1.csv
-ENV MODEL_PATH=/shared/model.pkl
+# Set default paths
+ENV DATASET_PATH="/data/2023_spotify_ds1.csv"
+ENV MODEL_PATH="/shared/model.pkl"
 
 CMD while true; do \
     echo "Starting model training..."; \
