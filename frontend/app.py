@@ -9,14 +9,19 @@ app = Flask(__name__, template_folder="templates", static_folder="static")
 MODEL_PATH = os.environ.get("MODEL_PATH", "/shared/model.pkl")
 
 def load_model():
-    """Loads the recommendation model from disk."""
+    """Loads the recommendation model from disk and validates it."""
     try:
         with open(MODEL_PATH, "rb") as f:
             model = pickle.load(f)
-        print("Model loaded successfully.")
-        return model
+        
+        if isinstance(model, pd.DataFrame) and not model.empty:
+            print(f"✅ Model loaded with {len(model)} rows")
+            return model
+        else:
+            print("⚠️ Model is empty or incorrect format!")
+            return None
     except Exception as e:
-        print("Error loading model:", e)
+        print("❌ Error loading model:", e)
         return None
 
 # Load the model at startup
