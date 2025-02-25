@@ -1,11 +1,11 @@
-
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: playlists-recommender-ml
   labels:
     app: playlists-recommender-ml
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"  # Wave 1 for ML
 spec:
   replicas: 1
   selector:
@@ -44,6 +44,8 @@ metadata:
   name: playlists-recommender-frontend
   labels:
     app: playlists-recommender-frontend
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"  # Wave 2 for Frontend
 spec:
   replicas: 1
   selector:
@@ -69,4 +71,3 @@ spec:
       - name: shared-volume
         persistentVolumeClaim:
           claimName: project2-pvc-zakhar
-
