@@ -6,8 +6,10 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: standard
+  storageClassName: standard  # Must match PV storageClassName
+  selector:
+    matchLabels:
+      namespace: zakhar  # Ensure it binds to your assigned PV
   resources:
     requests:
       storage: 1Gi
-
