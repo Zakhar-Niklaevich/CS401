@@ -4,18 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spotify Search</title>
-  
-  <!-- Favicon (Иконка вкладки) -->
-  <link rel="icon" type="image/png" href="https://signature-work.dukekunshan.edu.cn/wp-content/uploads/2024/05/logo-header-2.png">
-  
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://it.dukekunshan.edu.cn/wp-content/uploads/2023/10/cropped-DKU150x150-32x32.png" sizes="32x32" />
+  <link rel="icon" href="https://it.dukekunshan.edu.cn/wp-content/uploads/2023/10/cropped-DKU150x150-192x192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="https://it.dukekunshan.edu.cn/wp-content/uploads/2023/10/cropped-DKU150x150-180x180.png" />
+  <meta name="msapplication-TileImage" content="https://it.dukekunshan.edu.cn/wp-content/uploads/2023/10/cropped-DKU150x150-270x270.png" />
+
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
   <div class="container">
     <header class="header">
-      <!-- Логотип DKU вместо Spotify Logo -->
-      <img src="https://signature-work.dukekunshan.edu.cn/wp-content/uploads/2024/05/logo-header-2.png" 
-           alt="DKU Logo" class="logo">
+      <img src="{{ url_for('static', filename='logo.svg') }}" alt="Spotify Logo" class="logo">
       <h1>Track Search</h1>
     </header>
     <form id="recommendForm" class="search-form">
