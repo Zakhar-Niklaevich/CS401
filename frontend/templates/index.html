@@ -16,8 +16,10 @@
       <input type="text" id="songs" name="songs" placeholder="Enter track name" required>
       <button type="submit">Search</button>
     </form>
-    <section class="results">
-      <h2>Recommendations:</h2>
+    <section class="results" id="results-container" style="display: none;">
+      <h2 id="your-song-title">Your Song:</h2>
+      <ul id="your-song"></ul>
+      <h2 id="recommendations-title">Recommendations:</h2>
       <ul id="recommendations"></ul>
     </section>
   </div>
