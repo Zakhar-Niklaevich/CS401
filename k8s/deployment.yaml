@@ -7,7 +7,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"  # Wave 1 for ML
 spec:
-  replicas: 1
+  replicas: 3  # Increased from 1 to 3 for CI/CD testing
   selector:
     matchLabels:
       app: playlists-recommender-ml
@@ -21,7 +21,7 @@ spec:
         image: zakharnikolaevich/playlists-recommender-ml:v7 
         env:
         - name: DATASET_PATH
-          value: "/data/2023_spotify_ds1.csv"
+          value: "/data/2023_spotify_ds2.csv"  # Updated dataset for testing
         - name: MODEL_PATH
           value: "/shared/model.pkl"
         volumeMounts:
@@ -47,7 +47,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"  # Wave 2 for Frontend
 spec:
-  replicas: 1
+  replicas: 3  # Increased from 1 to 3 for testing
   selector:
     matchLabels:
       app: playlists-recommender-frontend
@@ -71,3 +71,4 @@ spec:
       - name: shared-volume
         persistentVolumeClaim:
           claimName: project2-pvc-zakhar
+
