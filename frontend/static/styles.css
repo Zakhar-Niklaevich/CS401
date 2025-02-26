@@ -24,7 +24,7 @@ body {
 }
 
 .logo {
-  width:350px;
+  width: 350px;
   margin-bottom: 20px;
   margin-right: 50px;
 }
@@ -71,14 +71,31 @@ body {
   text-align: left;
 }
 
-#recommendations {
+#your-song, #recommendations {
   list-style: none;
   padding: 0;
 }
 
-#recommendations li {
+#your-song li, #recommendations li {
   background-color: #282828;
   margin: 5px 0;
   padding: 10px 15px;
   border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.play-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #1DB954;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
