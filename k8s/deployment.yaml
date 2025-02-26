@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: ml
-        image: zakharnikolaevich/playlists-recommender-ml:v6 
+        image: zakharnikolaevich/playlists-recommender-ml:v7 
         env:
         - name: DATASET_PATH
           value: "/data/2023_spotify_ds1.csv"
@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: zakharnikolaevich/playlists-recommender-frontend
+        image: zakharnikolaevich/playlists-recommender-frontend:v7
         ports:
         - containerPort: 52002
         env:
