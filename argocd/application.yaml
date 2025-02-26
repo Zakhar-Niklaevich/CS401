@@ -1,18 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: playlist-recommender
-  namespace: argocd
+  name: playlist-recommender-zakhar  # Updated application name to match ArgoCD
+  namespace: argocd  # Namespace where ArgoCD is running
 spec:
-  project: default
+  project: zakhar-project  # Updated to match project name
   source:
     repoURL: "https://github.com/Zakhar-Niklaevich/CS401.git" 
-    targetRevision: HEAD
-    path: project2/k8s  
+    targetRevision: HEAD  # Always track the latest commit
+    path: k8s  # Path to Kubernetes manifests
   destination:
-    server: "https://kubernetes.default.svc"
-    namespace: zakhar
+    server: "https://kubernetes.default.svc"  # The Kubernetes cluster URL
+    namespace: zakhar  # Namespace where the application should be deployed
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
+      prune: true  # Automatically delete resources that are no longer in Git
+      selfHeal: true  # Automatically fix any differences between Git and the cluster
+    retry:
+      limit: 5  # Maximum number of retry attempts for failed syncs
+      backoff:
+        duration: "10s"  # Initial wait time before retrying
+        factor: 2  # Multiply wait time for each retry
+        maxDuration: "2m"  # Maximum wait time before stopping retries
