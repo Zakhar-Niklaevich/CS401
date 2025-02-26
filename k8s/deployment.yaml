@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: ml
-        image: zakharnikolaevich/playlists-recommender-ml:v7 
+        image: zakharnikolaevich/playlists-recommender-ml:v8 
         env:
         - name: DATASET_PATH
           value: "/data/2023_spotify_ds2.csv"  # Updated dataset for testing
