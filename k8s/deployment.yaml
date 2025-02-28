@@ -21,7 +21,7 @@ spec:
         image: zakharnikolaevich/playlists-recommender-ml:v8 
         env:
         - name: DATASET_PATH
-          value: "/data/2023_spotify_ds1.csv"  # Updated dataset for testing
+          value: "/data/2023_spotify_ds2.csv"  # Updated dataset for testing
         - name: MODEL_PATH
           value: "/shared/model.pkl"
         volumeMounts:
